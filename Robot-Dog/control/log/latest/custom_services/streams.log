@@ -1,0 +1,24 @@
+[0.753s] Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services': PYTHONPATH=/home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/build --no-deps symlink_data
+[0.932s] running develop
+[1.059s] running egg_info
+[1.059s] creating custom_services.egg-info
+[1.059s] writing custom_services.egg-info/PKG-INFO
+[1.059s] writing dependency_links to custom_services.egg-info/dependency_links.txt
+[1.059s] writing entry points to custom_services.egg-info/entry_points.txt
+[1.060s] writing requirements to custom_services.egg-info/requires.txt
+[1.060s] writing top-level names to custom_services.egg-info/top_level.txt
+[1.060s] writing manifest file 'custom_services.egg-info/SOURCES.txt'
+[1.060s] reading manifest file 'custom_services.egg-info/SOURCES.txt'
+[1.061s] writing manifest file 'custom_services.egg-info/SOURCES.txt'
+[1.062s] running build_ext
+[1.062s] Creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/python3.10/site-packages/custom-services.egg-link (link to .)
+[1.062s] Installing calculate_age_service script to /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/custom_services
+[1.062s] 
+[1.063s] Installed /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services
+[1.063s] running symlink_data
+[1.063s] creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index
+[1.063s] creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index
+[1.063s] creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index/packages
+[1.063s] symbolically linking /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/resource/custom_services -> /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index/packages
+[1.063s] symbolically linking /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/package.xml -> /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/custom_services
+[1.086s] Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services' returned '0': PYTHONPATH=/home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/build --no-deps symlink_data

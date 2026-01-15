@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-cdc99fc91123f1eef3a0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "pc_interfaces__py",
+					"jsonFile" : "directory-pc_interfaces__py-122a03e01f1a2e835819.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "build/pc_interfaces/pc_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "pc_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_pc_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_pc_interfaces_egg-12ddc8675620237f895e.json",
+					"name" : "ament_cmake_python_build_pc_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_pc_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_pc_interfaces-f16bc5efaa9f385751d8.json",
+					"name" : "ament_cmake_python_copy_pc_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces-58c893eace1b5ff36f4c.json",
+					"name" : "pc_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__cpp-f57d4badc6b50f123a9b.json",
+					"name" : "pc_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "pc_interfaces__py::@06d9a543e23565a45113",
+					"jsonFile" : "target-pc_interfaces__py-ccefb7ae808ef5da490e.json",
+					"name" : "pc_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_generator_c-b68b6be30554d5a7c884.json",
+					"name" : "pc_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_generator_py-25aded6d1a3e59fbc2c9.json",
+					"name" : "pc_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_c-a419486907b27211d0d9.json",
+					"name" : "pc_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_c__pyext-2b2679c7ce80783e4b26.json",
+					"name" : "pc_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_cpp-6370d3fdaff89af23653.json",
+					"name" : "pc_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_fastrtps_c-98fc9b6469bb1a62ba83.json",
+					"name" : "pc_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_fastrtps_c__pyext-340de077870c58497d0d.json",
+					"name" : "pc_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_fastrtps_cpp-4b016fd435135dad21d4.json",
+					"name" : "pc_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_introspection_c-5f42344e25ba1a34ea0b.json",
+					"name" : "pc_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_introspection_c__pyext-4a0ad344fc16b1548b18.json",
+					"name" : "pc_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces__rosidl_typesupport_introspection_cpp-902147a9b196ffcae55d.json",
+					"name" : "pc_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "pc_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-pc_interfaces_uninstall-c8944414c973d5c81f51.json",
+					"name" : "pc_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-ae1c71f410cca7379458.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces",
+		"source" : "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

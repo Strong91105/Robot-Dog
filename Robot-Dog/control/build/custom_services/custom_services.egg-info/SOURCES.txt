@@ -1,0 +1,13 @@
+package.xml
+setup.cfg
+setup.py
+custom_services/__init__.py
+custom_services/calculate_age_service.py
+custom_services.egg-info/PKG-INFO
+custom_services.egg-info/SOURCES.txt
+custom_services.egg-info/dependency_links.txt
+custom_services.egg-info/entry_points.txt
+custom_services.egg-info/requires.txt
+custom_services.egg-info/top_level.txt
+custom_services.egg-info/zip-safe
+resource/custom_services

@@ -1,0 +1,21 @@
+{
+  "package_name": "pc_interfaces",
+  "output_dir": "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_typesupport_fastrtps_c/pc_interfaces",
+  "template_dir": "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource",
+  "idl_tuples": [
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces:msg/Student.idl",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces:srv/ReturnStudentAge.idl"
+  ],
+  "target_dependencies": [
+    "/opt/ros/humble/lib/rosidl_typesupport_fastrtps_c/rosidl_typesupport_fastrtps_c",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_typesupport_fastrtps_c/__init__.py",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/idl__rosidl_typesupport_fastrtps_c.h.em",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/idl__type_support_c.cpp.em",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/msg__rosidl_typesupport_fastrtps_c.h.em",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/msg__type_support_c.cpp.em",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/srv__rosidl_typesupport_fastrtps_c.h.em",
+    "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/srv__type_support_c.cpp.em",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces/msg/Student.idl",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces/srv/ReturnStudentAge.idl"
+  ]
+}

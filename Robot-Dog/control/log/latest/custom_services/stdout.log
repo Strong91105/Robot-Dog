@@ -1,0 +1,22 @@
+running develop
+running egg_info
+creating custom_services.egg-info
+writing custom_services.egg-info/PKG-INFO
+writing dependency_links to custom_services.egg-info/dependency_links.txt
+writing entry points to custom_services.egg-info/entry_points.txt
+writing requirements to custom_services.egg-info/requires.txt
+writing top-level names to custom_services.egg-info/top_level.txt
+writing manifest file 'custom_services.egg-info/SOURCES.txt'
+reading manifest file 'custom_services.egg-info/SOURCES.txt'
+writing manifest file 'custom_services.egg-info/SOURCES.txt'
+running build_ext
+Creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/python3.10/site-packages/custom-services.egg-link (link to .)
+Installing calculate_age_service script to /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/lib/custom_services
+
+Installed /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services
+running symlink_data
+creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index
+creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index
+creating /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index/packages
+symbolically linking /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/resource/custom_services -> /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/ament_index/resource_index/packages
+symbolically linking /home/nuc-lassie/practical_course/group_ws/src/control/build/custom_services/package.xml -> /home/nuc-lassie/practical_course/group_ws/src/control/install/custom_services/share/custom_services

@@ -1,0 +1,269 @@
+[0.006s] Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces -DCMAKE_INSTALL_PREFIX=/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces
+[0.017s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.118s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.121s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.122s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.142s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.365s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[0.534s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.751s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.775s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[0.777s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[0.804s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[0.804s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[0.804s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[0.804s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[0.826s] -- Found PythonExtra: .so  
+[0.861s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.884s] -- Added test 'cppcheck' to perform static code analysis on C / C++ code
+[0.885s] -- Configured cppcheck include dirs: $<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_generator_c>;$<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_typesupport_fastrtps_c>;$<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_typesupport_introspection_c>;$<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_generator_cpp>;$<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_typesupport_fastrtps_cpp>;$<BUILD_INTERFACE:/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_typesupport_introspection_cpp>;/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_generator_c;/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_generator_py
+[0.885s] -- Configured cppcheck exclude dirs and/or files: 
+[0.886s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.888s] -- Added test 'lint_cmake' to check CMake code style
+[0.889s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.894s] -- Added test 'uncrustify' to check C / C++ code style
+[0.894s] -- Configured uncrustify additional arguments: 
+[0.895s] -- Added test 'xmllint' to check XML markup files
+[0.897s] -- Configuring done
+[0.915s] -- Generating done
+[0.921s] -- Build files have been written to: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces
+[0.925s] Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces -DCMAKE_INSTALL_PREFIX=/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces
+[0.927s] Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --build /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces -- -j8 -l8
+[0.953s] [  2%] [34m[1mGenerating C code for ROS interfaces[0m
+[0.961s] [  5%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[0.978s] [  5%] Built target ament_cmake_python_copy_pc_interfaces
+[1.187s] [  5%] Built target pc_interfaces__cpp
+[1.196s] [  7%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[1.198s] [ 12%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[1.198s] [ 12%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[1.233s] [ 17%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_generator_c.dir/rosidl_generator_c/pc_interfaces/srv/detail/return_student_age__functions.c.o[0m
+[1.234s] [ 17%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_generator_c.dir/rosidl_generator_c/pc_interfaces/msg/detail/student__functions.c.o[0m
+[1.252s] running egg_info
+[1.253s] creating pc_interfaces.egg-info
+[1.253s] writing pc_interfaces.egg-info/PKG-INFO
+[1.254s] writing dependency_links to pc_interfaces.egg-info/dependency_links.txt
+[1.254s] writing top-level names to pc_interfaces.egg-info/top_level.txt
+[1.254s] writing manifest file 'pc_interfaces.egg-info/SOURCES.txt'
+[1.257s] reading manifest file 'pc_interfaces.egg-info/SOURCES.txt'
+[1.257s] writing manifest file 'pc_interfaces.egg-info/SOURCES.txt'
+[1.288s] [ 17%] Built target ament_cmake_python_build_pc_interfaces_egg
+[1.292s] [ 20%] [32m[1mLinking C shared library libpc_interfaces__rosidl_generator_c.so[0m
+[1.316s] [ 20%] Built target pc_interfaces__rosidl_generator_c
+[1.323s] [ 23%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[1.326s] [ 28%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[1.326s] [ 28%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[1.404s] [ 33%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/pc_interfaces/srv/detail/return_student_age__type_support.cpp.o[0m
+[1.404s] [ 33%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/pc_interfaces/msg/detail/student__type_support.cpp.o[0m
+[1.473s] [ 35%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/pc_interfaces/srv/return_student_age__type_support.cpp.o[0m
+[1.474s] [ 38%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/pc_interfaces/msg/student__type_support.cpp.o[0m
+[1.576s] [ 41%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/pc_interfaces/msg/detail/dds_fastrtps/student__type_support.cpp.o[0m
+[1.639s] [ 43%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pc_interfaces/msg/detail/student__type_support.c.o[0m
+[1.644s] [ 46%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/pc_interfaces/msg/student__type_support.cpp.o[0m
+[1.670s] [ 48%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/pc_interfaces/srv/detail/return_student_age__type_support.c.o[0m
+[1.679s] [ 51%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_c.dir/rosidl_typesupport_c/pc_interfaces/srv/return_student_age__type_support.cpp.o[0m
+[1.705s] [ 53%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/pc_interfaces/msg/detail/student__type_support_c.cpp.o[0m
+[1.706s] [ 56%] [32m[1mLinking C shared library libpc_interfaces__rosidl_typesupport_introspection_c.so[0m
+[1.710s] [ 58%] [32m[1mLinking CXX shared library libpc_interfaces__rosidl_typesupport_c.so[0m
+[1.755s] [ 61%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/pc_interfaces/srv/detail/dds_fastrtps/return_student_age__type_support.cpp.o[0m
+[1.757s] [ 61%] Built target pc_interfaces__rosidl_typesupport_introspection_c
+[1.760s] [ 61%] Built target pc_interfaces__rosidl_typesupport_c
+[1.767s] [ 64%] [32mBuilding CXX object CMakeFiles/pc_interfaces__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/pc_interfaces/srv/detail/return_student_age__type_support_c.cpp.o[0m
+[1.806s] [ 66%] [32m[1mLinking CXX shared library libpc_interfaces__rosidl_typesupport_cpp.so[0m
+[1.850s] [ 69%] [32m[1mLinking CXX shared library libpc_interfaces__rosidl_typesupport_introspection_cpp.so[0m
+[1.852s] [ 69%] Built target pc_interfaces__rosidl_typesupport_cpp
+[1.894s] [ 69%] Built target pc_interfaces__rosidl_typesupport_introspection_cpp
+[2.058s] [ 71%] [32m[1mLinking CXX shared library libpc_interfaces__rosidl_typesupport_fastrtps_cpp.so[0m
+[2.059s] [ 74%] [32m[1mLinking CXX shared library libpc_interfaces__rosidl_typesupport_fastrtps_c.so[0m
+[2.117s] [ 74%] Built target pc_interfaces__rosidl_typesupport_fastrtps_c
+[2.117s] [ 74%] Built target pc_interfaces__rosidl_typesupport_fastrtps_cpp
+[2.131s] [ 74%] Built target pc_interfaces
+[2.145s] [ 76%] [34m[1mGenerating Python code for ROS interfaces[0m
+[2.412s] [ 76%] Built target pc_interfaces__py
+[2.426s] [ 79%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_generator_py.dir/rosidl_generator_py/pc_interfaces/msg/_student_s.c.o[0m
+[2.428s] [ 82%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_generator_py.dir/rosidl_generator_py/pc_interfaces/srv/_return_student_age_s.c.o[0m
+[2.503s] [ 84%] [32m[1mLinking C shared library rosidl_generator_py/pc_interfaces/libpc_interfaces__rosidl_generator_py.so[0m
+[2.529s] [ 84%] Built target pc_interfaces__rosidl_generator_py
+[2.547s] [ 89%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[2.547s] [ 89%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[2.555s] [ 92%] [32mBuilding C object CMakeFiles/pc_interfaces__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_c.c.o[0m
+[2.610s] [ 94%] [32m[1mLinking C shared library rosidl_generator_py/pc_interfaces/pc_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.618s] [ 97%] [32m[1mLinking C shared library rosidl_generator_py/pc_interfaces/pc_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.632s] [ 97%] Built target pc_interfaces__rosidl_typesupport_introspection_c__pyext
+[2.640s] [ 97%] Built target pc_interfaces__rosidl_typesupport_c__pyext
+[2.647s] [100%] [32m[1mLinking C shared library rosidl_generator_py/pc_interfaces/pc_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[2.670s] [100%] Built target pc_interfaces__rosidl_typesupport_fastrtps_c__pyext
+[2.678s] Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --build /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces -- -j8 -l8
+[2.685s] Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --install /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces
+[2.692s] -- Install configuration: ""
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/ament_index/resource_index/rosidl_interfaces/pc_interfaces
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__functions.c
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__type_support.h
+[2.692s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__struct.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__functions.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/return_student_age.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__functions.c
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__functions.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__struct.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__type_support.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/rosidl_generator_c__visibility_control.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/student.h
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/library_path.sh
+[2.693s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/library_path.dsv
+[2.694s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_generator_c.so
+[2.694s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_generator_c.so" to ""
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.694s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__rosidl_typesupport_fastrtps_c.h
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.694s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__rosidl_typesupport_fastrtps_c.h
+[2.694s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[2.694s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_fastrtps_c.so
+[2.694s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_fastrtps_c.so" to ""
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.694s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.695s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__rosidl_typesupport_introspection_c.h
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__type_support.c
+[2.695s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.695s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__type_support.c
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__rosidl_typesupport_introspection_c.h
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_introspection_c.so
+[2.695s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_introspection_c.so" to ""
+[2.695s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_c.so
+[2.696s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_c.so" to ""
+[2.696s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.696s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.696s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.696s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__builder.hpp
+[2.696s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__traits.hpp
+[2.696s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__type_support.hpp
+[2.696s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__struct.hpp
+[2.696s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/return_student_age.hpp
+[2.696s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.696s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__traits.hpp
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__builder.hpp
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__struct.hpp
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__type_support.hpp
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/student.hpp
+[2.697s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/rosidl_generator_cpp__visibility_control.hpp
+[2.697s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.697s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.697s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/dds_fastrtps
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__rosidl_typesupport_fastrtps_cpp.hpp
+[2.698s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.698s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__rosidl_typesupport_fastrtps_cpp.hpp
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/dds_fastrtps
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[2.698s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_fastrtps_cpp.so
+[2.698s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_fastrtps_cpp.so" to ""
+[2.698s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces
+[2.699s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv
+[2.699s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__rosidl_typesupport_introspection_cpp.hpp
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/srv/detail/return_student_age__type_support.cpp
+[2.699s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg
+[2.699s] -- Up-to-date: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__rosidl_typesupport_introspection_cpp.hpp
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/include/pc_interfaces/pc_interfaces/msg/detail/student__type_support.cpp
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_introspection_cpp.so
+[2.699s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_introspection_cpp.so" to ""
+[2.699s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_cpp.so
+[2.700s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_typesupport_cpp.so" to ""
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/pythonpath.sh
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/pythonpath.dsv
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces-0.0.0-py3.10.egg-info
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces-0.0.0-py3.10.egg-info/PKG-INFO
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces-0.0.0-py3.10.egg-info/top_level.txt
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces-0.0.0-py3.10.egg-info/SOURCES.txt
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces-0.0.0-py3.10.egg-info/dependency_links.txt
+[2.700s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_introspection_c.c
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_c.c
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/libpc_interfaces__rosidl_generator_py.so
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/__init__.py
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv/_return_student_age_s.c
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv/__init__.py
+[2.701s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv/_return_student_age.py
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg/_student_s.c
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg/__init__.py
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg/_student.py
+[2.702s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/_pc_interfaces_s.ep.rosidl_typesupport_fastrtps_c.c
+[2.730s] Listing '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces'...
+[2.730s] Compiling '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/__init__.py'...
+[2.730s] Listing '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg'...
+[2.730s] Compiling '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg/__init__.py'...
+[2.730s] Compiling '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/msg/_student.py'...
+[2.730s] Listing '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv'...
+[2.730s] Compiling '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv/__init__.py'...
+[2.730s] Compiling '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/srv/_return_student_age.py'...
+[2.733s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[2.734s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[2.734s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[2.734s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[2.734s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[2.735s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/local/lib/python3.10/dist-packages/pc_interfaces/pc_interfaces_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_generator_py.so
+[2.735s] -- Set runtime path of "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/libpc_interfaces__rosidl_generator_py.so" to ""
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/msg/Student.idl
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/srv/ReturnStudentAge.idl
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/msg/Student.msg
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/srv/ReturnStudentAge.srv
+[2.735s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/srv/ReturnStudentAge_Request.msg
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/srv/ReturnStudentAge_Response.msg
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/ament_index/resource_index/package_run_dependencies/pc_interfaces
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/ament_index/resource_index/parent_prefix_path/pc_interfaces
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/ament_prefix_path.sh
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/ament_prefix_path.dsv
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/path.sh
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/environment/path.dsv
+[2.736s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/local_setup.bash
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/local_setup.sh
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/local_setup.zsh
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/local_setup.dsv
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.dsv
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/ament_index/resource_index/packages/pc_interfaces
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_generator_cExport.cmake
+[2.737s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_generator_cExport-noconfig.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_typesupport_fastrtps_cExport.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_introspection_cExport.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_cExport.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_cExport-noconfig.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_generator_cppExport.cmake
+[2.738s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_typesupport_fastrtps_cppExport.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_introspection_cppExport.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_cppExport.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfaces__rosidl_typesupport_cppExport-noconfig.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_generator_pyExport.cmake
+[2.739s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/export_pc_interfaces__rosidl_generator_pyExport-noconfig.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/rosidl_cmake-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/ament_cmake_export_libraries-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/ament_cmake_export_targets-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.740s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfacesConfig.cmake
+[2.741s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/cmake/pc_interfacesConfig-version.cmake
+[2.741s] -- Installing: /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.xml
+[2.743s] Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --install /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces

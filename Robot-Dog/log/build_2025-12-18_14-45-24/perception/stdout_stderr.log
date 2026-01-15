@@ -1,0 +1,40 @@
+running egg_info
+creating ../build/perception/perception.egg-info
+writing ../build/perception/perception.egg-info/PKG-INFO
+writing dependency_links to ../build/perception/perception.egg-info/dependency_links.txt
+writing entry points to ../build/perception/perception.egg-info/entry_points.txt
+writing requirements to ../build/perception/perception.egg-info/requires.txt
+writing top-level names to ../build/perception/perception.egg-info/top_level.txt
+writing manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+reading manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/perception/perception.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/nuc-lassie/practical_course/group_ws/src/build/perception/build
+creating /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib
+creating /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception
+copying perception/step_detection_lidar.py -> /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception
+copying perception/__init__.py -> /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception
+copying perception/wall_detection.py -> /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception
+running install
+running install_lib
+creating /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception
+copying /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception/step_detection_lidar.py -> /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception
+copying /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception/__init__.py -> /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception
+copying /home/nuc-lassie/practical_course/group_ws/src/build/perception/build/lib/perception/wall_detection.py -> /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception/step_detection_lidar.py to step_detection_lidar.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception/wall_detection.py to wall_detection.cpython-310.pyc
+running install_data
+creating /home/nuc-lassie/practical_course/group_ws/src/install/perception/share/ament_index
+creating /home/nuc-lassie/practical_course/group_ws/src/install/perception/share/ament_index/resource_index
+creating /home/nuc-lassie/practical_course/group_ws/src/install/perception/share/ament_index/resource_index/packages
+copying resource/perception -> /home/nuc-lassie/practical_course/group_ws/src/install/perception/share/ament_index/resource_index/packages
+copying package.xml -> /home/nuc-lassie/practical_course/group_ws/src/install/perception/share/perception
+running install_egg_info
+Copying ../build/perception/perception.egg-info to /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/python3.10/site-packages/perception-0.0.0-py3.10.egg-info
+running install_scripts
+Installing step_detection_lidar script to /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/perception
+Installing wall_detection script to /home/nuc-lassie/practical_course/group_ws/src/install/perception/lib/perception
+writing list of installed files to '/home/nuc-lassie/practical_course/group_ws/src/build/perception/install.log'

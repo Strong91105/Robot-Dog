@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from pc_interfaces/srv/ReturnStudentAge.srv
+// generated code does not contain a copyright notice
+
+#include "pc_interfaces/msg/Student.idl"
+
+module pc_interfaces {
+  module srv {
+    struct ReturnStudentAge_Request {
+      pc_interfaces::msg::Student student;
+    };
+    struct ReturnStudentAge_Response {
+      int32 age;
+    };
+  };
+};

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "pc_interfaces__py",
+		"source" : "build/pc_interfaces/pc_interfaces__py"
+	}
+}

@@ -1,0 +1,7 @@
+{
+  "package_name": "pc_interfaces",
+  "non_idl_tuples": [
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces:msg/Student.msg",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces:srv/ReturnStudentAge.srv"
+  ]
+}

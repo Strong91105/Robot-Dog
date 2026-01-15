@@ -1,0 +1,55 @@
+running egg_info
+creating ../../build/simple_control/simple_control.egg-info
+writing ../../build/simple_control/simple_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/simple_control/simple_control.egg-info/dependency_links.txt
+writing entry points to ../../build/simple_control/simple_control.egg-info/entry_points.txt
+writing requirements to ../../build/simple_control/simple_control.egg-info/requires.txt
+writing top-level names to ../../build/simple_control/simple_control.egg-info/top_level.txt
+writing manifest file '../../build/simple_control/simple_control.egg-info/SOURCES.txt'
+reading manifest file '../../build/simple_control/simple_control.egg-info/SOURCES.txt'
+writing manifest file '../../build/simple_control/simple_control.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build
+creating /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib
+creating /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/__init__.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/go_forward.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/rotate_right_90.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/rotate_left_90.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/rotate_left_90_odom.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/go_left.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/go_forward_odom.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+copying simple_control/go_right.py -> /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control
+running install
+running install_lib
+creating /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/__init__.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/go_forward.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/rotate_right_90.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/rotate_left_90.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/rotate_left_90_odom.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/go_left.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/go_forward_odom.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+copying /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build/lib/simple_control/go_right.py -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/go_forward.py to go_forward.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/rotate_right_90.py to rotate_right_90.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/rotate_left_90.py to rotate_left_90.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/rotate_left_90_odom.py to rotate_left_90_odom.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/go_left.py to go_left.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/go_forward_odom.py to go_forward_odom.cpython-310.pyc
+byte-compiling /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control/go_right.py to go_right.cpython-310.pyc
+running install_data
+creating /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/share/ament_index
+creating /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/share/ament_index/resource_index
+creating /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/share/ament_index/resource_index/packages
+copying resource/simple_control -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/share/ament_index/resource_index/packages
+copying package.xml -> /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/share/simple_control
+running install_egg_info
+Copying ../../build/simple_control/simple_control.egg-info to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control-0.0.0-py3.10.egg-info
+running install_scripts
+Installing go_forward script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+Installing rotate_left_90 script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+Installing rotate_left_90_odom script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+writing list of installed files to '/home/nuc-lassie/practical_course/group_ws/src/build/simple_control/install.log'

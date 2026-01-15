@@ -1,0 +1,115 @@
+[0.079s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build', '--packages-select', 'pc_interfaces']
+[0.079s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=8, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=['pc_interfaces'], packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7f89ab409ab0>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7f89ab4094b0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7f89ab4094b0>>, mixin_verb=('build',))
+[0.197s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.198s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.198s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces'
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.198s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.213s] DEBUG:colcon.colcon_core.package_identification:Package '.' with type 'ros.ament_cmake' and name 'pc_interfaces'
+[0.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.213s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.214s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.214s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.227s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.227s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.228s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 17 installed packages in /home/nuc-lassie/practical_course/robot_ws/install
+[0.229s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 315 installed packages in /opt/ros/humble
+[0.231s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_target' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_clean_cache' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_clean_first' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'cmake_force_configure' from command line to 'False'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'ament_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'catkin_cmake_args' from command line to 'None'
+[0.254s] Level 5:colcon.colcon_core.verb:set package 'pc_interfaces' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.254s] DEBUG:colcon.colcon_core.verb:Building package 'pc_interfaces' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces', 'merge_install': False, 'path': '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces', 'symlink_install': False, 'test_result_base': None}
+[0.254s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.255s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.255s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces' with build type 'ament_cmake'
+[0.255s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces'
+[0.257s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.257s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.257s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.262s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces -DCMAKE_INSTALL_PREFIX=/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces
+[1.182s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces -DCMAKE_INSTALL_PREFIX=/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces
+[1.183s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --build /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces -- -j8 -l8
+[2.934s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --build /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces -- -j8 -l8
+[2.941s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --install /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces
+[2.998s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pc_interfaces)
+[2.999s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/nuc-lassie/practical_course/robot_ws/install/twist_stamper:/home/nuc-lassie/practical_course/robot_ws/install/image_package:/home/nuc-lassie/practical_course/robot_ws/install/go2_front_camera_driver:/opt/ros/humble /usr/bin/cmake --install /home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces
+[3.000s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces' for CMake module files
+[3.001s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces' for CMake config files
+[3.001s] Level 1:colcon.colcon_core.shell:create_environment_hook('pc_interfaces', 'cmake_prefix_path')
+[3.001s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.ps1'
+[3.002s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.dsv'
+[3.002s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.sh'
+[3.003s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib'
+[3.003s] Level 1:colcon.colcon_core.shell:create_environment_hook('pc_interfaces', 'ld_library_path_lib')
+[3.003s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.ps1'
+[3.003s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.dsv'
+[3.003s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.sh'
+[3.003s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/bin'
+[3.004s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/pkgconfig/pc_interfaces.pc'
+[3.004s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/python3.10/site-packages'
+[3.004s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/bin'
+[3.004s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.ps1'
+[3.004s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.dsv'
+[3.005s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.sh'
+[3.005s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.bash'
+[3.006s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.zsh'
+[3.006s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/colcon-core/packages/pc_interfaces)
+[3.006s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(pc_interfaces)
+[3.006s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces' for CMake module files
+[3.007s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces' for CMake config files
+[3.007s] Level 1:colcon.colcon_core.shell:create_environment_hook('pc_interfaces', 'cmake_prefix_path')
+[3.007s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.ps1'
+[3.007s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.dsv'
+[3.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/cmake_prefix_path.sh'
+[3.008s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib'
+[3.008s] Level 1:colcon.colcon_core.shell:create_environment_hook('pc_interfaces', 'ld_library_path_lib')
+[3.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.ps1'
+[3.008s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.dsv'
+[3.008s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/hook/ld_library_path_lib.sh'
+[3.009s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/bin'
+[3.009s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/pkgconfig/pc_interfaces.pc'
+[3.009s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/lib/python3.10/site-packages'
+[3.009s] Level 1:colcon.colcon_core.environment:checking '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/bin'
+[3.009s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.ps1'
+[3.010s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.dsv'
+[3.010s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.sh'
+[3.010s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.bash'
+[3.010s] INFO:colcon.colcon_core.shell:Creating package script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/pc_interfaces/package.zsh'
+[3.010s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/pc_interfaces/share/colcon-core/packages/pc_interfaces)
+[3.011s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.011s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.011s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.011s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.016s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.016s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.016s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.017s] DEBUG:colcon.colcon_notification.desktop_notification.notify2:Failed to initialize notify2: org.freedesktop.DBus.Error.ServiceUnknown: The name org.freedesktop.Notifications was not provided by any .service files
+[3.017s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.018s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/local_setup.ps1'
+[3.018s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/_local_setup_util_ps1.py'
+[3.019s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/setup.ps1'
+[3.020s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/local_setup.sh'
+[3.020s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/_local_setup_util_sh.py'
+[3.020s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/setup.sh'
+[3.021s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/local_setup.bash'
+[3.021s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/setup.bash'
+[3.022s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/local_setup.zsh'
+[3.023s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/install/setup.zsh'
