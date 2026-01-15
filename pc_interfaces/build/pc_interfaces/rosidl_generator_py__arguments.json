@@ -1,0 +1,26 @@
+{
+  "package_name": "pc_interfaces",
+  "output_dir": "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_generator_py/pc_interfaces",
+  "template_dir": "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource",
+  "idl_tuples": [
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces:msg/Student.idl",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces:srv/ReturnStudentAge.idl"
+  ],
+  "target_dependencies": [
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/generate_py_impl.py",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_action_pkg_typesupport_entry_point.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_action.py.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_idl_pkg_typesupport_entry_point.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_idl_support.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_idl.py.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_msg_pkg_typesupport_entry_point.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_msg_support.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_msg.py.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv_pkg_typesupport_entry_point.c.em",
+    "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv.py.em",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces/msg/Student.idl",
+    "/home/nuc-lassie/practical_course/group_ws/src/pc_interfaces/build/pc_interfaces/rosidl_adapter/pc_interfaces/srv/ReturnStudentAge.idl"
+  ]
+}

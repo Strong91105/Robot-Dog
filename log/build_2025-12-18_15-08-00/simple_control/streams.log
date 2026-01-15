@@ -1,0 +1,23 @@
+[1.177s] Invoking command in '/home/nuc-lassie/practical_course/group_ws/src/control/simple_control': PYTHONPATH=/home/nuc-lassie/practical_course/group_ws/src/build/simple_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simple_control build --build-base /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build install --record /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/install.log --single-version-externally-managed install_data
+[1.413s] running egg_info
+[1.413s] writing ../../build/simple_control/simple_control.egg-info/PKG-INFO
+[1.414s] writing dependency_links to ../../build/simple_control/simple_control.egg-info/dependency_links.txt
+[1.414s] writing entry points to ../../build/simple_control/simple_control.egg-info/entry_points.txt
+[1.414s] writing requirements to ../../build/simple_control/simple_control.egg-info/requires.txt
+[1.414s] writing top-level names to ../../build/simple_control/simple_control.egg-info/top_level.txt
+[1.415s] reading manifest file '../../build/simple_control/simple_control.egg-info/SOURCES.txt'
+[1.416s] writing manifest file '../../build/simple_control/simple_control.egg-info/SOURCES.txt'
+[1.416s] running build
+[1.416s] running build_py
+[1.417s] running install
+[1.417s] running install_lib
+[1.418s] running install_data
+[1.418s] running install_egg_info
+[1.420s] removing '/home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control-0.0.0-py3.10.egg-info' (and everything under it)
+[1.420s] Copying ../../build/simple_control/simple_control.egg-info to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages/simple_control-0.0.0-py3.10.egg-info
+[1.421s] running install_scripts
+[1.436s] Installing go_forward script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+[1.436s] Installing rotate_left_90 script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+[1.436s] Installing rotate_left_90_odom script to /home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/simple_control
+[1.436s] writing list of installed files to '/home/nuc-lassie/practical_course/group_ws/src/build/simple_control/install.log'
+[1.454s] Invoked command in '/home/nuc-lassie/practical_course/group_ws/src/control/simple_control' returned '0': PYTHONPATH=/home/nuc-lassie/practical_course/group_ws/src/build/simple_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/nuc-lassie/practical_course/group_ws/src/install/simple_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/simple_control build --build-base /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/build install --record /home/nuc-lassie/practical_course/group_ws/src/build/simple_control/install.log --single-version-externally-managed install_data
