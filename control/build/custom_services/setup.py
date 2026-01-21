@@ -1,1 +1,0 @@
-/home/nuc-lassie/practical_course/group_ws/src/control/custom_services/setup.py

@@ -79,13 +79,22 @@ class LidarSubscriber(Node):
             plt.ylim([-2.0, 2.0])
             plt.xlim([-2.0, 2.0])
             plt.gca().invert_xaxis()
-            # plt.axis('equal')
-            plt.legend(loc='lower right')
-            plt.pause(0.01)
+            #plt.pause(0.01)
 
-            wall_distance_l = - (intercept_l / slope_left)
-            wall_distance_r = - (intercept_r / slope_right)
-            wall_distance = abs(wall_distance_l) - abs(wall_distance_r)
+            #wall_distance_l = - (intercept_l / slope_left)
+            #wall_distance_r = - (intercept_r / slope_right)
+            #wall_distance = abs(wall_distance_l) - abs(wall_distance_r)
+
+            # Calculate denominators
+            den_l = np.sqrt((-1)**2 + slope_left**2)
+            den_r = np.sqrt((-1)**2 + slope_right**2)
+
+            # Perpendicular distances (absolute values)
+            dist_l = abs(intercept_l) / den_l
+            dist_r = abs(intercept_r) / den_r
+
+            # lateral_error: positive if closer to right wall, negative if closer to left
+            wall_distance = dist_l - dist_r
 
             print(f"angle: {angle} [rad], wall_distance: {wall_distance.item()} [m]")
 

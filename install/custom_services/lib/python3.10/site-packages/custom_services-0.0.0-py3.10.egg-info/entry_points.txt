@@ -1,3 +1,0 @@
-[console_scripts]
-calculate_age_service = custom_services.calculate_age_service:main
-
