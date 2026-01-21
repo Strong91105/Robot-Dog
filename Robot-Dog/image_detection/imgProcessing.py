@@ -12,11 +12,11 @@ class ImageProcessor(Node):
     def __init__(self):
         super().__init__('image_processor')
 
-        self.bridge = CvBridge()
+        self.bridge = CvBridge()    
 
         self.subscription = self.create_subscription(
             Image,
-            '/go2/Image',
+            '/camera/camera/color/image_raw',
             self.image_cb,
             10
         )
@@ -51,7 +51,7 @@ def main(args=None):
     rclpy.init(args=args)
     node = ImageProcessor()
     rclpy.spin(node)
-    node.destroy_node
+    node.destroy_node()
     rclpy.shutdown()
 
 

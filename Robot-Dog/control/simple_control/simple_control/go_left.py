@@ -7,11 +7,11 @@ class LeftNode(Node):
     def __init__(self):
         super().__init__('go_left')
         self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.timer = self.create_timer(0.2, self.publish_left) # publish a message every 0.2s
+        self.timer = self.create_timer(0.4, self.publish_left) # publish a message every 0.2s
         self.get_logger().info('Left Node started: Moving left!')
 
         self.speed_y = 0.1 # Left speed (m/s)
-        self.const_time_to_run = 10
+        self.const_time_to_run = 1
         self.counter = 0
 
     def publish_left(self):
