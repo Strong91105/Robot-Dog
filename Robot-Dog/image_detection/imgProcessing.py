@@ -4,7 +4,6 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
 from ultralytics import YOLO
-## hello
 
 
 
