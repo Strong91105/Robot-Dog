@@ -5,9 +5,9 @@ from nav_msgs.msg import Odometry
 import math
 
 
-class MoveForwardOdom(Node):
+class MoveBackwardOdom(Node):
     def __init__(self):
-        super().__init__('move_forward_odom')
+        super().__init__('move_backward_odom')
 
         self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
         self.subscriber_ = self.create_subscription(
@@ -17,15 +17,15 @@ class MoveForwardOdom(Node):
             10
         )
 
-        self.speed_linear = 0.2        # Forward speed (m/s)
-        self.target_distance = 0.1     # Distance to move forward (meters)
+        self.speed_linear = -0.2        # Forward speed (m/s)
+        self.target_distance = 0.5     # Distance to move forward (meters)
         self.tolerance = 0.05
 
         self.start_x = None
         self.start_y = None
         self.finished = False
 
-        self.get_logger().info('Move Forward started: Moving forward!')
+        self.get_logger().info('Move Backward started: Moving backward!')
 
     def odom_cb(self, msg):
         x = msg.pose.pose.position.x
@@ -57,7 +57,7 @@ class MoveForwardOdom(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = MoveForwardOdom()
+    node = MoveBackwardOdom()
     rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()

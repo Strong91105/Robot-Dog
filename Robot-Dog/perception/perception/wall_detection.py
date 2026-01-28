@@ -41,18 +41,18 @@ class LidarSubscriber(Node):
         # filter the point cloud for the left and right wall points
         wall_points = point_cloud.copy()
         # TODO: filter the point cloud in x and z direction
-        threshold_z_axis = -0.05# TODO
-        threshold_x_axis = 0.52 #TODO
-        wall_points = wall_points[wall_points[:, 2] > threshold_z_axis] # Z-axis
-        wall_points = wall_points[(wall_points[:, 0] < threshold_x_axis) & (wall_points[:, 0] > -0.35)]  # X-axis
+        threshold_z_axis = 0.28# TODO
+        threshold_x_axis = -1.2 #TODO
+        wall_points = wall_points[wall_points[:, 2] < threshold_z_axis] # Z-axis
+        wall_points = wall_points[(wall_points[:, 0] > threshold_x_axis) & (wall_points[:, 0] < -0.2)]  # X-axis
         #wall_points = wall_points[abs(wall_points[:, 0]) < threshold_x_axis] # X-axis
 
         left_wall = wall_points.copy()
         # TODO: filter the point cloud in y direction
-        threshold_y_axis = 0.42 # TODO
-        left_wall = left_wall[(left_wall[:, 1] > threshold_y_axis) & (left_wall[:, 1] < 0.58)]   # Y-axis
+        threshold_y_axis = 0.10 # TODO
+        left_wall = left_wall[(left_wall[:, 1] > threshold_y_axis) & (left_wall[:, 1] < 1)]   # Y-axis
         right_wall = wall_points.copy()
-        right_wall = right_wall[(right_wall[:, 1] < -threshold_y_axis) & (right_wall[:, 1] > -0.58)] # Y-axis
+        right_wall = right_wall[(right_wall[:, 1] < -threshold_y_axis) & (right_wall[:, 1] > -1)] # Y-axis
         
         if len(left_wall) > 1 and len(right_wall) > 1:
 
@@ -79,7 +79,7 @@ class LidarSubscriber(Node):
             plt.ylim([-2.0, 2.0])
             plt.xlim([-2.0, 2.0])
             plt.gca().invert_xaxis()
-            #plt.pause(0.01)
+            plt.pause(0.01)
 
             #wall_distance_l = - (intercept_l / slope_left)
             #wall_distance_r = - (intercept_r / slope_right)
