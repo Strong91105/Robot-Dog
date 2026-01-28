@@ -1,0 +1,5 @@
+[console_scripts]
+go_forward = simple_control.go_forward:main
+rotate_left_90 = simple_control.rotate_left_90:main
+rotate_left_90_odom = simple_control.rotate_left_90_odom:main
+

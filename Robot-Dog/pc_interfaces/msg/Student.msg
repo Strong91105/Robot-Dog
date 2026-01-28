@@ -1,0 +1,2 @@
+string name
+int32 year_of_birth

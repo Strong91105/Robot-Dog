@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['lava', 'left_arrow', 'right_arrow']
+
+roboflow:
+  workspace: tutorial-4sekg
+  project: lassie
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tutorial-4sekg/lassie/dataset/2

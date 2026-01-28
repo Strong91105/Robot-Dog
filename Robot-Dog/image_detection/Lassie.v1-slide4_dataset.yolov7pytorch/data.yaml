@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 3
+names: ['Lava', 'Left arrow', 'Right arrow']
+
+roboflow:
+  workspace: tutorial-4sekg
+  project: lassie-sop7a
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/tutorial-4sekg/lassie-sop7a/dataset/1
