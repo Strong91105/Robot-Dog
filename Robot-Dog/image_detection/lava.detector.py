@@ -56,6 +56,7 @@ class LavaDetector(Node):
             cls, x1, y1, x2, y2 = data[i:i + 5]
 
             if self.class_names[int(cls)] == "lava":
+                self.get_logger().info("Lava seen")
                 if y2 > self.image_height * 0.65:
                     lava_close = True
 

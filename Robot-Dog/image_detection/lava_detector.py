@@ -5,6 +5,7 @@ from std_msgs.msg import Bool
 from cv_bridge import CvBridge
 from ultralytics import YOLO
 import cv2
+import os
 
 
 class LavaDetector(Node):
@@ -12,7 +13,12 @@ class LavaDetector(Node):
         super().__init__('lava_detector')
 
         self.bridge = CvBridge()
-        self.model = YOLO("best.pt")  # LOAD MODEL ONCE
+        # 1. Fix: Dynamic Pathing for best.pt
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        model_path = os.path.join(script_dir, "best.pt")
+        
+        self.get_logger().info(f"Loading YOLO model from: {model_path}")
+        self.model = YOLO(model_path)
 
         # Camera subscriber
         self.subscription = self.create_subscription(
