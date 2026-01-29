@@ -7,6 +7,7 @@ from std_msgs.msg import String
 from cv_bridge import CvBridge
 from ultralytics import YOLO
 import numpy as np
+import os
 
 
 class ImageProcessor(Node):
@@ -14,7 +15,12 @@ class ImageProcessor(Node):
         super().__init__('image_processor')
 
         self.bridge = CvBridge()
-        self.model = YOLO("best.pt")  # load once
+        # 1. Fix: Dynamic Pathing for best.pt
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        model_path = os.path.join(script_dir, "best.pt")
+        
+        self.get_logger().info(f"Loading YOLO model from: {model_path}")
+        self.model = YOLO(model_path)
 
         self.conf_thres = 0.40
         self.iou_thres = 0.45

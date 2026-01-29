@@ -24,7 +24,7 @@ class LavaDetector(Node):
         # YOLO detection data
         self.detection_sub = self.create_subscription(
             Float32MultiArray,
-            '/yolo/detections',
+            '/camera/detected_labels',
             self.detection_cb,
             10
         )
@@ -43,22 +43,14 @@ class LavaDetector(Node):
         self.latest_detections = msg.data
 
     def image_cb(self, msg):
-        if self.latest_detections is None:
-            return
-
-        cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
-        self.image_height = cv_image.shape[0]
-
+     
         lava_close = False
         data = self.latest_detections
 
-        for i in range(0, len(data), 5):
-            cls, x1, y1, x2, y2 = data[i:i + 5]
-
-            if self.class_names[int(cls)] == "lava":
+        while True:
+            if self.latest_detections == "lava":
                 self.get_logger().info("Lava seen")
-                if y2 > self.image_height * 0.65:
-                    lava_close = True
+                self.jump_pub.pusblish(jump_msg)
 
         jump_msg = Bool()
         jump_msg.data = lava_close
