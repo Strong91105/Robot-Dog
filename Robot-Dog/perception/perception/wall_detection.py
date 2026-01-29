@@ -42,10 +42,25 @@ class LidarSubscriber(Node):
         wall_points = point_cloud.copy()
         # TODO: filter the point cloud in x and z direction
         threshold_z_axis = 0.28# TODO
-        threshold_x_axis = -1.2 #TODO
-        wall_points = wall_points[wall_points[:, 2] < threshold_z_axis] # Z-axis
-        wall_points = wall_points[(wall_points[:, 0] > threshold_x_axis) & (wall_points[:, 0] < -0.2)]  # X-axis
-        #wall_points = wall_points[abs(wall_points[:, 0]) < threshold_x_axis] # X-axis
+        threshold_x_axis = 0.05 #TODO
+        # wall_points = wall_points[wall_points[:, 2] < threshold_z_axis] # Z-axis
+
+        # Z-Acis filtering as a function of x
+        slope_m = -0.21
+        intercept_c = 0.25
+        dynamic_z_threshold = (slope_m * wall_points[:, 0]) + intercept_c
+
+        floor_clearance = 0.20
+        mask = (wall_points[:, 2] < dynamic_z_threshold) & (wall_points[:, 2] < floor_clearance)
+        wall_points = wall_points[mask]
+
+
+
+
+
+
+        # wall_points = wall_points[(wall_points[:, 0] > threshold_x_axis) & (wall_points[:, 0] < -0.2)]  # X-axis
+        wall_points = wall_points[(wall_points[:, 0]) < threshold_x_axis] # X-axis
 
         left_wall = wall_points.copy()
         # TODO: filter the point cloud in y direction

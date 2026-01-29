@@ -4,6 +4,7 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
 from ultralytics import YOLO
+import os
 
 
 
@@ -12,6 +13,12 @@ class ImageProcessor(Node):
         super().__init__('image_processor')
 
         self.bridge = CvBridge()    
+
+        script_dir = os.path.dirname(os.path.realpath(__file__))
+        model_path = os.path.join(script_dir, 'best.pt')
+
+        self.get_logger().info(f'Loading model from: {model_path}')
+        self.model = YOLO(model_path)
 
         self.subscription = self.create_subscription(
             Image,
@@ -30,11 +37,10 @@ class ImageProcessor(Node):
 
 
     def image_cb(self, msg):
-        model = YOLO("best.pt")
         try:
             cv_image = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8') #ROS to OpenCV
             
-            results = model(cv_image)
+            results = self.model(cv_image)
             result = results[0].plot()
            ## gray_image = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
             

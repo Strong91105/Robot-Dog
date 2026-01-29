@@ -11,7 +11,7 @@ class ForwardNode(Node):
         self.get_logger().info('Forward Node started: Moving forward!')
 
         self.speed_x = 0.1 # Forward speed (m/s)
-        self.const_time_to_run = 4
+        self.const_time_to_run = 10
         self.counter = 0
 
     def publish_forward(self):

@@ -18,8 +18,8 @@ class WallFollower(Node):
         self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
 
         
-        self.kp_lateral = 0.3   # How hard to push back to center CHANGE
-        self.kp_angular = 0.3   # How hard to steer straight CHANGE
+        self.kp_lateral = 0.35   # How hard to push back to center CHANGE
+        self.kp_angular = 0.1   # How hard to steer straight CHANGE
         
         self.get_logger().info('Centering Controller Online:')
 
@@ -32,14 +32,15 @@ class WallFollower(Node):
         cmd = Twist()
 
         
-        cmd.linear.y = -(self.kp_lateral * lateral_error)
+        cmd.linear.y = self.kp_lateral * lateral_error
 
         
         # If the robot is slanted, rotate it back to 0
         cmd.angular.z = -(self.kp_angular * angle_error)
 
         # 3. FORWARD SPEED (CAREFUL)
-        cmd.linear.x = 0.0 
+        cmd.linear.x = 0.2
+ 
 
         # SAFETY: Limit max speeds
         cmd.linear.y = max(min(cmd.linear.y, 0.4), -0.4)
