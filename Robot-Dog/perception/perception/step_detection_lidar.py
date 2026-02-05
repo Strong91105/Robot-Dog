@@ -8,9 +8,10 @@ import numpy as np
 import open3d as o3d
 import sensor_msgs_py.point_cloud2 as pc2
 from scipy.spatial.transform import Rotation as R
-from robot_interfaces.msg import Stair
+#from robot_interfaces.msg import Stair
 from numpy.lib import recfunctions as rfn
 from collections import defaultdict
+from cv_bridge import CvBridge
 
 class LidarStepDetector(Node):
     def __init__(self):
