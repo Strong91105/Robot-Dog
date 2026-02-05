@@ -1,68 +1,81 @@
-
 import rclpy
 from rclpy.node import Node
-from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
+from sensor_msgs.msg import Imu
+from unitree_go.msg import SportModeCmd
 import math
-class RotateLeft90Odom(Node):
+import time
+
+class PalletDebugSwitcher(Node):
     def __init__(self):
-        super().__init__('rotate_left_90_odom')
-        self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
+        super().__init__('pallet_debug_switcher')
 
-        # Subscriber to odom topic
-        self.subscriber_ = self.create_subscription(
-            Odometry, # Topic type
-            '/odom', # Topic name
-            self.odom_cb,
-            10)
+        self.odom_sub = self.create_subscription(Odometry, '/odom', self.odom_cb, 10)
+        self.imu_sub = self.create_subscription(Imu, '/imu/data', self.imu_cb, 10)
+        self.cmd_pub = self.create_publisher(SportModeCmd, '/sport_mode', 10)
+
+        # Thresholds - Adjusted for sensitivity
+        self.target_height = 0.11    # Lowered slightly to account for compression
+        self.pitch_tolerance = 0.15  # Loosened to 8 degrees
+        self.wait_duration = 5.0
         
-        self.speed_yaw = 0.5 # Rotating speed
-        self.set_target = False # Indicate when target orientation is set
-        self.finished = False # Indicate when the movement is finished
-        self.target = math.pi/2 # Target
-        self.tolerance = 0.09 # Tolerance
-        self.target_yaw = None
-
+        self.initial_z = None
+        self.current_z = 0.0
+        self.current_pitch = 0.0
+        self.state = "CALIBRATING"
         
-        self.get_logger().info('Rotate Left 90 started: Start Rotating!')
-
-
-
+        # Timer for logging so we don't spam the terminal
+        self.timer = self.create_timer(0.5, self.log_status)
 
     def odom_cb(self, msg):
-        q = msg.pose.pose.orientation
-        yaw = self.quaternion_to_euler(q)
-        if not self.set_target:
-            # self.initial_yaw = yaw
-            self.target_yaw = yaw + self.target
-            self.set_target = True
-
-        diff = abs(yaw - self.target_yaw) # Difference between current orientation and target orientation
-
-        if diff > math.pi*2:
-            diff -= 2*math.pi # 
-
-        if diff > self.tolerance and not self.finished:
-            self.get_logger().info(f'Remaining angle to rotate: {diff} rad')
-            vel_msg = Twist()
-            vel_msg.angular.z = self.speed_yaw
-            self.publisher_.publish(vel_msg)
-        else:
-            self.finished = True
-
-
-    def quaternion_to_euler(self, q):
-        siny_cosp = 2 * (q.w * q.z + q.x * q.y)
-        cosy_cosp = 1 - 2 * (q.y * q.y + q.z * q.z)
-        yaw = math.atan2(siny_cosp, cosy_cosp)
-        return yaw
-
+        # Check if height is actually in Z. On some Go2 setups, check msg.pose.pose.position.y too.
+        self.current_z = msg.pose.pose.position.z
         
+        if self.state == "CALIBRATING" and self.current_z != 0.0:
+            self.initial_z = self.current_z
+            self.state = "MONITORING"
+            self.get_logger().info(f"CALIBRATED. Initial Z: {self.initial_z:.3f}")
+
+    def imu_cb(self, msg):
+        q = msg.orientation
+        # Standard Pitch calculation
+        sinp = 2 * (q.w * q.y - q.z * q.x)
+        self.current_pitch = math.asin(sinp) if abs(sinp) < 1 else math.copysign(math.pi/2, sinp)
+        
+        self.check_logic()
+
+    def log_status(self):
+        if self.state != "CALIBRATING" and self.initial_z is not None:
+            height_diff = self.current_z - self.initial_z
+            self.get_logger().info(
+                f"STATUS: Height Diff: {height_diff:.3f}m | Pitch: {math.degrees(self.current_pitch):.1f}° | State: {self.state}"
+            )
+
+    def check_logic(self):
+        if self.state == "MONITORING":
+            height_diff = self.current_z - self.initial_z
+            
+            # The detection condition
+            if height_diff > self.target_height and abs(self.current_pitch) < self.pitch_tolerance:
+                self.get_logger().warn("!!! CLIMB DETECTED !!!")
+                self.climb_detected_time = time.time()
+                self.state = "WAITING"
+
+        elif self.state == "WAITING":
+            if time.time() - self.climb_detected_time >= self.wait_duration:
+                self.switch_gait()
+                self.state = "FINISHED"
+
+    def switch_gait(self):
+        msg = SportModeCmd()
+        msg.gait_type = 3 
+        self.cmd_pub.publish(msg)
+        self.get_logger().error("GAIT SWITCHED TO STAIR MODE")
+
 def main(args=None):
     rclpy.init(args=args)
-    node = RotateLeft90Odom()
+    node = PalletDebugSwitcher()
     rclpy.spin(node)
-    node.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
