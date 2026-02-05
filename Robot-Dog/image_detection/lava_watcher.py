@@ -1,6 +1,12 @@
+import math
+
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
+from geometry_msgs.msg import Twist
+from nav_msgs.msg import Odometry
+
+from go2_interfaces.srv import Mode  # ensure this package is sourced/installed
 
 
 class LavaWatcher(Node):
@@ -19,6 +25,29 @@ class LavaWatcher(Node):
         )
 
         self.get_logger().info("LavaWatcher started. Will store initial lava distance once.")
+
+        # ---- Walking stuff you provided ----
+        self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
+        self.subscriber_ = self.create_subscription(
+            Odometry,
+            '/odom',
+            self.odom_cb,
+            10
+        )
+
+        # Movement Parameters
+        self.speed_linear = 0.2    # meters per second
+        self.target_distance = None  # set once lava distance is stored
+        self.tolerance = 0.05      # distance tolerance
+
+        # State Variables
+        self.start_x = None
+        self.start_y = None
+        self.set_start = False
+        self.finished = False
+
+        # ---- Jump command client (from initial script) ----
+        self.mode_client = self.create_client(Mode, '/mode')
 
     def on_labels_distance(self, msg: String):
         # One-shot: already stored -> ignore all future messages
@@ -52,33 +81,25 @@ class LavaWatcher(Node):
             self.initial_lava_distance_m = d
             self.initial_lava_time = self.get_clock().now()
 
+            # Hook into your walking logic
+            self.target_distance = self.initial_lava_distance_m
+            self.finished = False
+            self.set_start = False
+            self.start_x = None
+            self.start_y = None
+
             self.get_logger().info(
                 f"Stored initial lava distance: {d:.3f} m "
                 f"(t={self.initial_lava_time.nanoseconds / 1e9:.3f}s)."
             )
+            self.get_logger().info(f"Moving forward {self.target_distance:.3f} meters...")
             return
 
-self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
-        self.subscriber_ = self.create_subscription(
-            Odometry, 
-            '/odom', 
-            self.odom_cb, 
-            10)
-        
-        # Movement Parameters
-        self.speed_linear = 0.2    # meters per second
-        self.target_distance = self.initial_lava_distance # meters to travel
-        self.tolerance = 0.05      # distance tolerance
-        
-        # State Variables
-        self.start_x = None
-        self.start_y = None
-        self.set_start = False
-        self.finished = False
-
-        self.get_logger().info(f'Moving forward {self.target_distance} meters...')
-
     def odom_cb(self, msg):
+        # Don’t do anything until we have a target distance from lava detection
+        if self.target_distance is None:
+            return
+
         if self.finished:
             return
 
@@ -101,16 +122,39 @@ self.publisher_ = self.create_publisher(Twist, '/cmd_vel', 10)
         remaining_distance = self.target_distance - distance_travelled
 
         if remaining_distance > self.tolerance:
-            self.get_logger().info(f'Travelled: {distance_travelled:.2f}m | Remaining: {remaining_distance:.2f}m', throttle_duration_sec=0.5)
+            self.get_logger().info(
+                f"Travelled: {distance_travelled:.2f}m | Remaining: {remaining_distance:.2f}m",
+                throttle_duration_sec=0.5
+            )
             vel_msg = Twist()
             vel_msg.linear.x = self.speed_linear
             self.publisher_.publish(vel_msg)
         else:
             # Stop the robot
-            self.publisher_.publish(Twist()) 
+            self.publisher_.publish(Twist())
             self.finished = True
-            self.get_logger().info('Target reached! Stopping.')
+            self.get_logger().info("Target reached! Stopping.")
 
+            # ---- Added: jump AFTER reaching target ----
+            self.jump_front()
+
+    # Jump command from the initial script
+    def jump_front(self):
+        if not self.mode_client.service_is_ready():
+            self.get_logger().warn("Service /mode not available yet.")
+            return
+
+        req = Mode.Request()
+        req.mode = "front_jump"
+        future = self.mode_client.call_async(req)
+        future.add_done_callback(self._on_mode_response)
+
+    def _on_mode_response(self, future):
+        try:
+            resp = future.result()
+            self.get_logger().info(f"/mode response: success={resp.success}, message='{resp.message}'")
+        except Exception as e:
+            self.get_logger().error(f"/mode call failed: {e}")
 
 
 def main(args=None):
