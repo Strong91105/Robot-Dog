@@ -82,7 +82,7 @@ class LavaWatcher(Node):
             self.initial_lava_time = self.get_clock().now()
 
             # Hook into your walking logic
-            self.target_distance = self.initial_lava_distance_m
+            self.target_distance = self.initial_lava_distance_m-0.15
             self.finished = False
             self.set_start = False
             self.start_x = None
