@@ -35,7 +35,7 @@ class PalletDetector(Node):
         # --- Sub ---
         self.sub = self.create_subscription(
             PointCloud2,
-            "/utlidar/cloud",
+            "/pointcloud",
             self.lidar_callback,
             1
         )
@@ -73,6 +73,7 @@ class PalletDetector(Node):
     # ---------------- ROS callbacks ----------------
 
     def lidar_callback(self, msg: PointCloud2):
+        
         pts = self.pointcloud2_to_xyz(msg)
         if pts.size == 0:
             self.publish_detection(False, 0.0, 0.0)
@@ -186,7 +187,7 @@ class PalletDetector(Node):
         if detected:
             self.get_logger().info(f"Pallet: YES | dist={distance:.2f} m | h={height:.2f} m")
         # else:
-        #     self.get_logger().debug("Pallet: no")
+            self.get_logger().debug("Pallet: no")
 
     def pointcloud2_to_xyz(self, cloud_msg: PointCloud2) -> np.ndarray:
         pts = np.array(list(pc2.read_points(

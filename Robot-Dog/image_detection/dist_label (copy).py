@@ -6,6 +6,7 @@ from cv_bridge import CvBridge
 from ultralytics import YOLO
 import numpy as np
 import os
+import random
 
 class ImageProcessor(Node):
     def __init__(self):
@@ -143,11 +144,20 @@ class ImageProcessor(Node):
             self.labels_dist_pub.publish(String(data=data_str))
 
             # --- Publish Lava Float Data ---
+            # --- Publish Lava Float Data ---
+            float_msg = Float32()
+            target_msg = Float32()
+            target_msg.data = float(50.0) # Moved out of the loop for consistency
+
             if lava_dist is not None:
-                float_msg = Float32()
                 float_msg.data = float(lava_dist)
-                self.lava_float_pub.publish(float_msg)
-                self.lava_target.publish(target)
+            else:
+                # If no lava is detected, publish a high value
+                noise = random.uniform(-0.1, 0.1)
+                float_msg.data = 999.0 + noise 
+            
+            self.lava_float_pub.publish(float_msg)
+            self.lava_target.publish(target_msg)
 
         except Exception as e:
             self.get_logger().error(f'Image processing error: {e}')
