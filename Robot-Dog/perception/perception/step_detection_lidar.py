@@ -51,7 +51,7 @@ class PalletDetector(Node):
         self.accumulation_limit = 3  # lower latency than 5; tune to taste
 
         # --- Tunables: ROI in lidar frame ---
-        self.x_min, self.x_max = 0.30, 1.50
+        self.x_min, self.x_max = -1.50, -0.30
         self.y_min, self.y_max = -0.45, 0.45
         self.z_min, self.z_max = -1.50, 1.00
 

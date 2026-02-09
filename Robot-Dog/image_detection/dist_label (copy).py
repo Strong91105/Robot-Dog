@@ -58,6 +58,12 @@ class ImageProcessor(Node):
             10
         )
 
+        self.lava_target = self.create_publisher(
+            Float32, 
+            '/camera/lava_target', 
+            10
+        )
+
         self.get_logger().info(f'Image Processor started. Target: {self.target_label}')
 
     def depth_cb(self, msg: Image):
@@ -109,6 +115,7 @@ class ImageProcessor(Node):
 
             label_dist_pairs = []
             lava_dist = None
+            target = 50
 
             if r.boxes is not None:
                 boxes_xyxy = r.boxes.xyxy.cpu().numpy()
@@ -140,6 +147,7 @@ class ImageProcessor(Node):
                 float_msg = Float32()
                 float_msg.data = float(lava_dist)
                 self.lava_float_pub.publish(float_msg)
+                self.lava_target.publish(target)
 
         except Exception as e:
             self.get_logger().error(f'Image processing error: {e}')
