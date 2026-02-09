@@ -38,16 +38,16 @@ class StepActuator(Node):
     def send_climb_up(self):
         cmd = SportModeCmd()
         cmd.mode = 6  # Example: CLIMB UP MODE
-        cmd.step_height = 0.18  # Adjust for pallet
-        cmd.step_distance = 0.3
+        #cmd.step_height = 0.18  # Adjust for pallet
+        #cmd.step_distance = 0.3
         self.cmd_pub.publish(cmd)
         self.get_logger().info('CLIMB UP COMMAND SENT')
 
     def send_climb_down(self):
         cmd = SportModeCmd()
         cmd.mode = 7  # Example: CLIMB DOWN MODE
-        cmd.step_height = 0.18
-        cmd.step_distance = 0.3
+        #cmd.step_height = 0.18
+        #cmd.step_distance = 0.3
         self.cmd_pub.publish(cmd)
         self.get_logger().info('CLIMB DOWN COMMAND SENT')
 
