@@ -23,7 +23,7 @@ class LidarStepDetector(Node):
         # Subscribe to the LIDAR point cloud topic
         self.subscription = self.create_subscription(
             PointCloud2,
-            '/go2/Lidar',
+            '/utlidar/cloud',
             self.lidar_callback,
             1
         )
