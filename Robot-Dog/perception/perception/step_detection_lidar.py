@@ -8,7 +8,7 @@ import numpy as np
 import open3d as o3d
 import sensor_msgs_py.point_cloud2 as pc2
 from scipy.spatial.transform import Rotation as R
-#from robot_interfaces.msg import Stair
+from std_msgs.msg import Float32MultiArray
 from numpy.lib import recfunctions as rfn
 from collections import defaultdict
 from cv_bridge import CvBridge
@@ -18,7 +18,7 @@ class LidarStepDetector(Node):
         super().__init__('lidar_step_detector')
 
         # Publisher for step detection
-        self.step_detection_publisher = self.create_publisher(Stair, 'stair_detection', 1)
+        self.step_detection_publisher = self.create_publisher(Float32MultiArray, 'stair_detection', 1)
         
         # Subscribe to the LIDAR point cloud topic
         self.subscription = self.create_subscription(
@@ -79,7 +79,11 @@ class LidarStepDetector(Node):
         # Convert Open3D clouds to ROS PointCloud2 and publish
         self.publish_clouds(ground_cloud, obstacle_cloud, step_cloud, header)
         
-        stair_msg = Stair()
+        stair_msg = Float32MultiArray()
+        detected = 0.0
+        upstairs_flag = -1.0
+        distance = 0.0
+
 
         if step_cloud is not None and len(step_cloud.points) > 0:
             step_points = np.asarray(step_cloud.points)
@@ -87,14 +91,15 @@ class LidarStepDetector(Node):
             
             if step_distance is not None:
     
-                stair_msg.detected = True
+                detected = 1.0
                 if upstairs == 1:
-                    stair_msg.upstairs = True
+                    upstairs_flag = 1.0
                 elif upstairs == 2:
-                    stair_msg.upstairs = False
-                stair_msg.distance = step_distance
+                    upstairs_flag = 0.0
+                distance = float(step_distance)
 
         # Publish custom message
+        stair_msg.data = [detected, upstairs_flag, distance]
         self.step_detection_publisher.publish(stair_msg)
 
     def convert_pointcloud2_to_numpy(self, cloud_msg):
