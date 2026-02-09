@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-
+ 
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import PointCloud2
-from std_msgs.msg import Header
+from std_msgs.msg import String
 import numpy as np
 import open3d as o3d
 import sensor_msgs_py.point_cloud2 as pc2
@@ -35,6 +35,15 @@ class LidarStepDetector(Node):
         
         self.cloud_accumulation = []
         self.accumulation_limit = 5
+
+        # Climb mode publisher
+        from std_msgs.msg import String
+        self.climb_mode_pub = self.create_publisher(String, '/climb_mode', 10)
+        self.climb_mode = "idle"  # idle, climb_up, on_pallet, climb_down
+        self.pallet_detected = False
+        self.on_pallet = False
+        self.drop_off_detected = False
+        self.last_mode = None
 
     def lidar_callback(self, msg):
         # Convert PointCloud2 message to numpy array
@@ -72,25 +81,31 @@ class LidarStepDetector(Node):
         return point_cloud[mask]
     
     def process_point_cloud(self, point_cloud, header):
-         
-        # Use Open3D for RANSAC-based segmentation of ground and ground obstacles
+        # ...existing code...
         ground_cloud, obstacle_cloud, step_cloud, upstairs = self.segment_ground_and_obstacles(point_cloud)
-
-        # Convert Open3D clouds to ROS PointCloud2 and publish
         self.publish_clouds(ground_cloud, obstacle_cloud, step_cloud, header)
-        
+
         stair_msg = Float32MultiArray()
         detected = 0.0
         upstairs_flag = -1.0
         distance = 0.0
 
+        pallet_height_min = 0.10
+        pallet_height_max = 0.25
+        drop_off_height_min = -0.30
+        drop_off_height_max = -0.10
+
+        pallet_detected = False
+        drop_off_detected = False
+        step_points = None
+        step_distance = None
+        step_height = None
 
         if step_cloud is not None and len(step_cloud.points) > 0:
             step_points = np.asarray(step_cloud.points)
             step_distance = self.compute_distance(step_points)
-            
+            step_height = np.mean(step_points[:, 2]) if step_points.shape[0] > 0 else None
             if step_distance is not None:
-    
                 detected = 1.0
                 if upstairs == 1:
                     upstairs_flag = 1.0
@@ -98,7 +113,37 @@ class LidarStepDetector(Node):
                     upstairs_flag = 0.0
                 distance = float(step_distance)
 
-        # Publish custom message 
+                # Pallet detection
+                if step_height is not None and pallet_height_min <= step_height <= pallet_height_max:
+                    pallet_detected = True
+                # Drop-off detection
+                if step_height is not None and drop_off_height_min <= step_height <= drop_off_height_max:
+                    drop_off_detected = True
+
+        # State machine for climb mode
+        mode = self.climb_mode
+        if not self.on_pallet:
+            if pallet_detected and mode != "climb_up":
+                mode = "climb_up"
+            elif mode == "climb_up" and detected and step_distance < 0.2:
+                mode = "on_pallet"
+                self.on_pallet = True
+        else:
+            if drop_off_detected and mode != "climb_down":
+                mode = "climb_down"
+            elif mode == "climb_down" and detected and step_distance < 0.2:
+                mode = "idle"
+                self.on_pallet = False
+
+        # Publish climb mode if changed
+        if mode != self.last_mode:
+            climb_msg = String()
+            climb_msg.data = mode
+            self.climb_mode_pub.publish(climb_msg)
+            self.get_logger().info(f"Climb mode changed: {mode}")
+            self.last_mode = mode
+        self.climb_mode = mode
+
         stair_msg.data = [detected, upstairs_flag, distance]
         self.step_detection_publisher.publish(stair_msg)
 
