@@ -71,7 +71,7 @@ class LidarStepDetector(Node):
         # Define boundaries for STEP detection (for example, only keep points within 0.4m to 2m in front of the robot)
         x_min, x_max = 0.3, 1.5  # Distance in the X direction (in front of the LIDAR)
         y_min, y_max = -0.4, 0.4  # Limit in the Y direction (left and right of LIDAR)
-        z_min, z_max = -2.0, 0.5  # Height limits (focus on step height range)
+        z_min, z_max = 0.05, 0.3  # Height limits (focus on step height range)
         # Apply the cropping condition
         mask = (point_cloud[:, 0] > x_min) & (point_cloud[:, 0] < x_max) & \
             (point_cloud[:, 1] > y_min) & (point_cloud[:, 1] < y_max) & \
@@ -394,3 +394,4 @@ def main(args=None):
 
 
 if __name__ == '__main__':
+
