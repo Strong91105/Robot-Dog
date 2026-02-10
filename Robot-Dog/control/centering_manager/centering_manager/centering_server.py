@@ -5,7 +5,7 @@ import subprocess
 import time
 import signal
 
-TIMEOUT = 0.3  # seconds
+TIMEOUT = 1.5 # seconds
 
 class CenteringControllerManager(Node):
 

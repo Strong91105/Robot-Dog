@@ -19,7 +19,7 @@ class WallFollower(Node):
 
         
         self.kp_lateral = 0.35   # How hard to push back to center CHANGE
-        self.kp_angular = 4.5   # How hard to steer straight CHANGE
+        self.kp_angular = 4.8   # How hard to steer straight CHANGE
         
         self.get_logger().info('Centering Controller Online:')
 
