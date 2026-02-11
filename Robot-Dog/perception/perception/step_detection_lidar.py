@@ -6,63 +6,75 @@ import numpy as np
 import open3d as o3d
 import sensor_msgs_py.point_cloud2 as pc2
 from numpy.lib import recfunctions as rfn
+from collections import defaultdict
 
 from sensor_msgs.msg import PointCloud2
 from robot_interfaces.msg import Stair
 
 
-class LidarPalletFaceDetector(Node):
+class LidarStepDetector(Node):
     """
-    Simple pallet FACE (vertical plane) detector.
+    Detect the top surface (horizontal plane) of a pallet using RANSAC + DBSCAN.
 
-    Assumptions you gave:
-    - Forward direction is +X
-    - Z is non-negative (z >= 0). So z=0 is the floor (or near it).
-    - LiDAR is ~0.20 m above ground (not directly used here since z is ground-referenced)
-    - Pallet height ~0.14 m (used as a sanity check for z span)
-
+    Key assumptions:
+    - LiDAR is mounted UPSIDE DOWN at 30-degree angle on the robot
+    - Incoming PointCloud2 is in raw LiDAR sensor frame (NOT gravity-aligned)
+    - Target pallet height is ~0.14 m above ground (post-transformation)
+    
     Core logic:
-    1) Crop ROI directly in front
-    2) Remove ground points by a simple z threshold
-    3) Fit ONE plane (RANSAC) to what's left
-    4) Keep it only if the plane is vertical-ish (normal not pointing up)
-    5) Validate by size (width in y, height in z) and distance in x
-    6) Publish detection + debug clouds
+    1) Transform points from sensor frame to gravity-aligned frame (180° X-flip + 30° Y-pitch)
+    2) Crop ROI directly in front
+    3) Fit ground plane using RANSAC
+    4) Fit horizontal plane (step) using RANSAC
+    5) Apply DBSCAN clustering to nearby inlier points
+    6) Validate using planarity check and depth consistency
+    7) Publish detection + debug clouds
     """
 
     def __init__(self):
-        super().__init__("lidar_pallet_face_detector")
+        super().__init__("lidar_step_detector")
 
         # ---- ROS I/O ----
         self.sub = self.create_subscription(PointCloud2, "/go2/Lidar", self.lidar_callback, 1)
 
-        self.det_pub = self.create_publisher(Stair, "stair_detection", 1)  # reused msg type
+        self.det_pub = self.create_publisher(Stair, "stair_detection", 1)
         self.ground_pub = self.create_publisher(PointCloud2, "/ground_cloud", 10)
         self.obstacle_pub = self.create_publisher(PointCloud2, "/obstacle_cloud", 10)
-        self.face_pub = self.create_publisher(PointCloud2, "/pallet_face_cloud", 10)
+        self.step_pub = self.create_publisher(PointCloud2, "/step_cloud", 10)
 
-        # ---- ROI in front (tune as needed) ----
-        self.x_min, self.x_max = 0.25, 1.50     # meters in front
-        self.y_min, self.y_max = -0.50, 0.50    # meters left/right
-        self.z_min, self.z_max = 0.00, 0.80     # z is non-negative per your note
+        # ---- ROI in front (tuned for pallet detection) ----
+        # Now in gravity-aligned frame after transformation
+        self.x_min, self.x_max = 0.45, 1.50     # meters in front
+        self.y_min, self.y_max = -0.60, 0.60    # meters left/right
+        self.z_min, self.z_max = 0.00, 0.80     # positive Z = up (gravity aligned)
 
-        # ---- Ground removal (simple) ----
-        self.ground_z_thresh = 0.03  # points with z <= this treated as ground
+        # ---- Ground plane segmentation (RANSAC) ----
+        self.ground_dist_thresh = 0.05
+        self.ground_ransac_n = 3
+        self.ground_iters = 1000
 
-        # ---- Plane fit params ----
-        self.plane_dist_thresh = 0.02
-        self.plane_ransac_n = 3
-        self.plane_iters = 600
+        # ---- Step detection (horizontal plane) ----
+        # Pallet at ~0.14m height above ground (post-transformation)
+        self.min_step_height = 0.10    # minimum Z for step detection
+        self.max_step_height = 0.20    # maximum Z for step detection (pallet height)
+        
+        self.step_dist_thresh = 0.02
+        self.step_ransac_n = 3
+        self.step_iters = 1000
+        
+        # ---- Horizontal plane criteria ----
+        # Normal vector should point mostly in Z direction (horizontal plane)
+        self.horizontal_min_nz = 0.90
 
-        # ---- Vertical plane criteria ----
-        # For a vertical face, plane normal should have small Z component (nz ~ 0)
-        self.vertical_max_abs_nz = 0.25
+        # ---- DBSCAN clustering params ----
+        self.dbscan_eps = 0.05
+        self.dbscan_min_points = 5
 
         # ---- Validation thresholds ----
-        self.min_inliers = 120
-        self.min_y_span = 0.30          # pallet face should be wide-ish
-        self.min_z_span = 0.08          # pallet is ~0.14 m tall; allow partial view
-        self.max_z_span = 0.40          # reject big walls if you want (still generous)
+        self.min_inliers = 50
+        self.min_cluster_points = 30
+        self.max_z_variance = 0.01      # planarity check
+        self.depth_tolerance = 0.09     # depth consistency check
 
     def lidar_callback(self, msg: PointCloud2):
         pts = self.pointcloud2_to_xyz(msg)
@@ -70,32 +82,38 @@ class LidarPalletFaceDetector(Node):
             self.publish_detection(False, 0.0, False)
             return
 
+        # Transform from sensor frame to gravity-aligned frame
+        pts = self.align_to_base_frame(pts)
+
         roi = self.crop_roi(pts)
         if roi.shape[0] < 200:
             self.publish_detection(False, 0.0, False)
             return
 
-        # Split ground vs non-ground with a simple z threshold
-        ground_mask = roi[:, 2] <= self.ground_z_thresh
-        ground_pts = roi[ground_mask]
-        nonground_pts = roi[~ground_mask]
+        # Convert to Open3D point cloud
+        cloud = o3d.geometry.PointCloud()
+        cloud.points = o3d.utility.Vector3dVector(roi)
+
+        # Segment ground plane from the entire ROI
+        ground_cloud, ground_model, obstacle_cloud = self.segment_ground_and_obstacles(cloud)
 
         # Publish debug clouds
-        if ground_pts.shape[0] > 0:
-            self.ground_pub.publish(self.xyz_to_pointcloud2(ground_pts, msg.header))
-        if nonground_pts.shape[0] > 0:
-            self.obstacle_pub.publish(self.xyz_to_pointcloud2(nonground_pts, msg.header))
+        if np.asarray(ground_cloud.points).shape[0] > 0:
+            self.ground_pub.publish(self.xyz_to_pointcloud2(
+                np.asarray(ground_cloud.points), msg.header))
+        if np.asarray(obstacle_cloud.points).shape[0] > 0:
+            self.obstacle_pub.publish(self.xyz_to_pointcloud2(
+                np.asarray(obstacle_cloud.points), msg.header))
 
-        detected, distance, face_pts = self.detect_vertical_face(nonground_pts)
+        # Detect step (horizontal plane) in the obstacle cloud
+        detected, distance, step_cloud = self.detect_step(obstacle_cloud)
 
-        if detected and face_pts is not None and face_pts.shape[0] > 0:
-            self.face_pub.publish(self.xyz_to_pointcloud2(face_pts, msg.header))
+        if detected and step_cloud is not None:
+            step_pts = np.asarray(step_cloud.points)
+            if step_pts.shape[0] > 0:
+                self.step_pub.publish(self.xyz_to_pointcloud2(step_pts, msg.header))
 
-        # Reuse Stair msg:
-        # - detected: pallet face detected
-        # - upstairs: not meaningful for pallet; set False
-        # - distance: distance to face (median x)
-        self.publish_detection(detected, distance, False)
+        self.publish_detection(detected, distance, detected)  # upstairs=detected
 
     def crop_roi(self, pts: np.ndarray) -> np.ndarray:
         m = (
@@ -105,57 +123,167 @@ class LidarPalletFaceDetector(Node):
         )
         return pts[m]
 
-    def detect_vertical_face(self, pts: np.ndarray):
+    def align_to_base_frame(self, points: np.ndarray) -> np.ndarray:
         """
-        Fit a single plane and check if it looks like a vertical pallet face.
-
+        Transform point cloud from LiDAR sensor frame to gravity-aligned base frame.
+        
+        LiDAR mounting configuration:
+        - 180° rotation about X-axis (upside down)
+        - 30° downward pitch about Y-axis
+        
+        Final rotation: R = R_pitch_y @ R_flip_x
+        
+        Parameters:
+        - points: Nx3 array of points in sensor frame (float32)
+        
         Returns:
-          (detected: bool, distance_m: float, face_pts: Nx3 or None)
+        - Nx3 array of points in gravity-aligned frame (float32)
         """
-        if pts.shape[0] < 80:
+        # Convert rotation angles to radians
+        angle_flip_x = np.pi  # 180 degrees
+        angle_pitch_y = np.radians(30)  # 30 degrees
+        
+        # Rotation matrix for 180° about X-axis (flip upside down)
+        cos_fx = np.cos(angle_flip_x)
+        sin_fx = np.sin(angle_flip_x)
+        R_flip_x = np.array([
+            [1.0,    0.0,    0.0],
+            [0.0,  cos_fx, -sin_fx],
+            [0.0,  sin_fx,  cos_fx]
+        ], dtype=np.float32)
+        
+        # Rotation matrix for 30° about Y-axis (downward pitch)
+        cos_py = np.cos(angle_pitch_y)
+        sin_py = np.sin(angle_pitch_y)
+        R_pitch_y = np.array([
+            [cos_py,  0.0, sin_py],
+            [0.0,     1.0,   0.0],
+            [-sin_py, 0.0, cos_py]
+        ], dtype=np.float32)
+        
+        # Combined rotation: apply flip first, then pitch
+        R_combined = R_pitch_y @ R_flip_x
+        
+        # Apply rotation to all points
+        rotated_points = points @ R_combined.T
+        
+        return rotated_points
+
+    def segment_ground_and_obstacles(self, point_cloud):
+        """
+        Segment ground plane and potential obstacles using RANSAC.
+        
+        Parameters:
+        - point_cloud: Open3D point cloud object
+        
+        Returns:
+        - ground_cloud: Ground plane points
+        - plane_model: Ground plane model coefficients
+        - obstacle_cloud: Non-ground points
+        """
+        plane_model, inliers = point_cloud.segment_plane(
+            distance_threshold=self.ground_dist_thresh,
+            ransac_n=self.ground_ransac_n,
+            num_iterations=self.ground_iters
+        )
+
+        ground_cloud = point_cloud.select_by_index(inliers)
+        obstacle_cloud = point_cloud.select_by_index(inliers, invert=True)
+
+        return ground_cloud, plane_model, obstacle_cloud
+
+    def detect_step(self, point_cloud):
+        """
+        Detect horizontal step (pallet top surface) using RANSAC + DBSCAN + validation.
+        
+        Parameters:
+        - point_cloud: Open3D point cloud of obstacles
+        
+        Returns:
+        - (detected: bool, distance_m: float, step_cloud: PointCloud or None)
+        """
+        points = np.asarray(point_cloud.points)
+
+        # Need minimum points to detect
+        if len(points) < 10:
             return False, 0.0, None
 
-        cloud = o3d.geometry.PointCloud()
-        cloud.points = o3d.utility.Vector3dVector(pts)
-
-        plane_model, inliers = cloud.segment_plane(
-            distance_threshold=self.plane_dist_thresh,
-            ransac_n=self.plane_ransac_n,
-            num_iterations=self.plane_iters
+        # Fit horizontal plane using RANSAC
+        plane_model, inliers = point_cloud.segment_plane(
+            distance_threshold=self.step_dist_thresh,
+            ransac_n=self.step_ransac_n,
+            num_iterations=self.step_iters
         )
+
+        # Check if plane is horizontal (normal mostly in Z direction)
+        normal_vector = plane_model[:3]
+        if np.abs(normal_vector[2]) <= self.horizontal_min_nz:
+            return False, 0.0, None
 
         if len(inliers) < self.min_inliers:
             return False, 0.0, None
 
-        a, b, c, d = plane_model
-        normal = np.array([a, b, c], dtype=np.float32)
-        n_norm = float(np.linalg.norm(normal))
-        if n_norm < 1e-6:
-            return False, 0.0, None
-        normal /= n_norm
+        # Extract inlier cloud
+        inlier_cloud = point_cloud.select_by_index(inliers)
+        inlier_points = np.asarray(inlier_cloud.points)
 
-        # Vertical plane => normal Z component near 0
-        if abs(normal[2]) > self.vertical_max_abs_nz:
-            return False, 0.0, None
+        # Check if plane height is in expected range for pallet
+        z_coords = inlier_points[:, 2]
+        sorted_indices = np.argsort(z_coords)
+        top_indices = sorted_indices[-max(1, int(len(z_coords) * 0.15)):]
+        top_heights = z_coords[top_indices]
+        step_height = np.mean(top_heights)
 
-        inlier_cloud = cloud.select_by_index(inliers)
-        face_pts = np.asarray(inlier_cloud.points)
-        if face_pts.shape[0] < self.min_inliers:
+        if not (self.min_step_height < step_height < self.max_step_height):
             return False, 0.0, None
 
-        # Basic size checks to avoid tiny clutter
-        y_span = float(face_pts[:, 1].max() - face_pts[:, 1].min())
-        z_span = float(face_pts[:, 2].max() - face_pts[:, 2].min())
+        # Apply DBSCAN clustering to group nearby inlier points
+        labels = np.array(inlier_cloud.cluster_dbscan(
+            eps=self.dbscan_eps,
+            min_points=self.dbscan_min_points,
+            print_progress=False
+        ))
 
-        if y_span < self.min_y_span:
+        valid_labels = labels[labels != -1]
+        if valid_labels.size == 0:
             return False, 0.0, None
-        if z_span < self.min_z_span or z_span > self.max_z_span:
+
+        # Find largest cluster
+        unique_labels, counts = np.unique(labels, return_counts=True)
+        largest_cluster_label = unique_labels[np.argmax(counts)]
+        largest_cluster_indices = np.where(labels == largest_cluster_label)[0]
+
+        if len(largest_cluster_indices) < self.min_cluster_points:
             return False, 0.0, None
 
-        # Distance: median X of the face points (stable)
-        distance = float(np.median(face_pts[:, 0]))
+        # Planarity check
+        cluster_points = np.asarray(inlier_cloud.select_by_index(largest_cluster_indices).points)
+        z_variance = np.var(cluster_points[:, 2])
 
-        return True, distance, face_pts
+        if z_variance > self.max_z_variance:
+            return False, 0.0, None
+
+        # Depth consistency check
+        x_to_z_values = defaultdict(list)
+        for x, _, z in cluster_points:
+            x_to_z_values[round(x, 2)].append(z)
+
+        is_consistent_depth = True
+        for z_values in x_to_z_values.values():
+            unique_heights = np.unique(z_values)
+            if len(unique_heights) > 5 and np.ptp(unique_heights) > self.depth_tolerance:
+                is_consistent_depth = False
+                break
+
+        if not is_consistent_depth:
+            return False, 0.0, None
+
+        # Successfully detected step
+        step_cloud = inlier_cloud.select_by_index(largest_cluster_indices)
+        distance = float(np.median(cluster_points[:, 0]))
+
+        self.get_logger().info(f"Step detected! Height: {step_height:.3f} m, Distance: {distance:.2f} m")
+        return True, distance, step_cloud
 
     def publish_detection(self, detected: bool, distance: float, upstairs: bool):
         msg = Stair()
@@ -180,7 +308,7 @@ class LidarPalletFaceDetector(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    node = LidarPalletFaceDetector()
+    node = LidarStepDetector()
     try:
         rclpy.spin(node)
     finally:
