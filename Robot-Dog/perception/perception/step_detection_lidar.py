@@ -9,7 +9,7 @@ from numpy.lib import recfunctions as rfn
 from collections import defaultdict
 
 from sensor_msgs.msg import PointCloud2
-from robot_interfaces.msg import Stair
+from std_msgs.msg import Float32MultiArray
 
 
 class LidarStepDetector(Node):
@@ -35,32 +35,35 @@ class LidarStepDetector(Node):
         super().__init__("lidar_step_detector")
 
         # ---- ROS I/O ----
-        self.sub = self.create_subscription(PointCloud2, "/go2/Lidar", self.lidar_callback, 1)
+        self.sub = self.create_subscription(PointCloud2, "/utlidar/cloud", self.lidar_callback, 1)
 
-        self.det_pub = self.create_publisher(Stair, "stair_detection", 1)
+        self.det_pub = self.create_publisher(Float32MultiArray, "stair_detection", 1)
         self.ground_pub = self.create_publisher(PointCloud2, "/ground_cloud", 10)
         self.obstacle_pub = self.create_publisher(PointCloud2, "/obstacle_cloud", 10)
         self.step_pub = self.create_publisher(PointCloud2, "/step_cloud", 10)
 
         # ---- ROI in front (tuned for pallet detection) ----
         # Now in gravity-aligned frame after transformation
-        self.x_min, self.x_max = 0.45, 1.50     # meters in front
-        self.y_min, self.y_max = -0.60, 0.60    # meters left/right
-        self.z_min, self.z_max = 0.00, 0.80     # positive Z = up (gravity aligned)
+        self.x_min, self.x_max = 0.20, 3.00     # meters in front
+        self.y_min, self.y_max = -1.0, 2.0    # meters left/right
+        self.z_min, self.z_max = -1.50, 1.50     # positive Z = up (gravity aligned)
+
+          
+
 
         # ---- Ground plane segmentation (RANSAC) ----
-        self.ground_dist_thresh = 0.05
+        self.ground_dist_thresh = 0.03
         self.ground_ransac_n = 3
-        self.ground_iters = 1000
+        self.ground_iters = 800
 
         # ---- Step detection (horizontal plane) ----
         # Pallet at ~0.14m height above ground (post-transformation)
-        self.min_step_height = 0.10    # minimum Z for step detection
-        self.max_step_height = 0.20    # maximum Z for step detection (pallet height)
+        self.min_step_height = 0.05    # minimum Z for step detection
+        self.max_step_height = 0.30    # maximum Z for step detection (pallet height)
         
-        self.step_dist_thresh = 0.02
+        self.step_dist_thresh = 0.05
         self.step_ransac_n = 3
-        self.step_iters = 1000
+        self.step_iters = 800
         
         # ---- Horizontal plane criteria ----
         # Normal vector should point mostly in Z direction (horizontal plane)
@@ -71,21 +74,117 @@ class LidarStepDetector(Node):
         self.dbscan_min_points = 5
 
         # ---- Validation thresholds ----
-        self.min_inliers = 50
+        self.min_inliers = 25
         self.min_cluster_points = 30
         self.max_z_variance = 0.01      # planarity check
         self.depth_tolerance = 0.09     # depth consistency check
 
-    def lidar_callback(self, msg: PointCloud2):
+    def test_sweep_step_detection(self, msg: PointCloud2):
+        """
+        Sweep through Z levels in ROI to detect horizontal planes (pallets).
+        Logs detected plane heights and median distance.
+        """
+
         pts = self.pointcloud2_to_xyz(msg)
+        pts = self.align_to_base_frame(pts)
+        self.get_logger().info(f"Raw cloud size: {len(pts)}")
+
+        if pts.size == 0:
+            return
+
+        # Keep only points in front
+        pts = pts[pts[:, 0] > 0.05]
+        if pts.size == 0:
+            return
+
+        # Convert to Open3D point cloud
+        cloud = o3d.geometry.PointCloud()
+        cloud.points = o3d.utility.Vector3dVector(pts)
+
+        # Ground segmentation (optional)
+        ground_cloud, plane_model, obstacle_cloud = self.segment_ground_and_obstacles(cloud)
+
+        obstacle_points = np.asarray(obstacle_cloud.points)
+        if obstacle_points.shape[0] == 0:
+            return
+
+        # Sweep Z levels
+        z_min, z_max = obstacle_points[:, 2].min(), obstacle_points[:, 2].max()
+        z_levels = np.linspace(z_min, z_max, 10)  # 10 slices
+
+        self.get_logger().info(f"Sweeping from Z={z_min:.2f} to Z={z_max:.2f}")
+
+        for z0 in z_levels:
+            # Slice points near current Z level
+            slice_mask = (obstacle_points[:, 2] >= z0 - 0.02) & (obstacle_points[:, 2] <= z0 + 0.02)
+            slice_pts = obstacle_points[slice_mask]
+
+            if slice_pts.shape[0] < 20:
+                continue
+
+            slice_cloud = o3d.geometry.PointCloud()
+            slice_cloud.points = o3d.utility.Vector3dVector(slice_pts)
+
+            # Fit plane
+            try:
+                plane_model, inliers = slice_cloud.segment_plane(
+                    distance_threshold=0.02,
+                    ransac_n=3,
+                    num_iterations=500
+                )
+            except:
+                continue
+
+            if len(inliers) < 10:
+                continue
+
+            # Check horizontal
+            normal = plane_model[:3] / np.linalg.norm(plane_model[:3])
+            if abs(normal[2]) < 0.9:
+                continue
+
+            inlier_pts = slice_pts[inliers]
+            median_dist = float(np.median(inlier_pts[:, 0]))
+
+            self.get_logger().info(f"Potential plane at Z={z0:.3f} m, median distance={median_dist:.2f} m, inliers={len(inliers)}")
+
+
+    def lidar_callback(self, msg: PointCloud2):
+
+
+        pts = self.pointcloud2_to_xyz(msg)
+
+        
+
+        
+        pts = self.align_to_base_frame(pts)
+        """ self.get_logger().info(
+            f"X range: {pts[:,0].min():.2f} to {pts[:,0].max():.2f}"
+        )
+        self.get_logger().info(
+        f"Y range: {pts[:,1].min():.2f} to {pts[:,1].max():.2f}"
+        )   
+        self.get_logger().info(
+            f"Z range: {pts[:,2].min():.2f} to {pts[:,2].max():.2f}"
+        )    
+
+        self.get_logger().info(f"Raw cloud size: {len(pts)}") """
+
         if pts.size == 0:
             self.publish_detection(False, 0.0, False)
             return
 
         # Transform from sensor frame to gravity-aligned frame
-        pts = self.align_to_base_frame(pts)
+        
 
         roi = self.crop_roi(pts)
+        """ self.get_logger().info(f"ROI size: {len(roi)}")
+        self.get_logger().info(f"Mean Z in ROI: {np.mean(roi[:,2])}") """
+        
+        
+        
+
+
         if roi.shape[0] < 200:
             self.publish_detection(False, 0.0, False)
             return
@@ -96,6 +195,8 @@ class LidarStepDetector(Node):
 
         # Segment ground plane from the entire ROI
         ground_cloud, ground_model, obstacle_cloud = self.segment_ground_and_obstacles(cloud)
+        
+        self.get_logger().info(f"Ground size: {len(np.asarray(ground_cloud.points))}") 
 
         # Publish debug clouds
         if np.asarray(ground_cloud.points).shape[0] > 0:
@@ -107,6 +208,8 @@ class LidarStepDetector(Node):
 
         # Detect step (horizontal plane) in the obstacle cloud
         detected, distance, step_cloud = self.detect_step(obstacle_cloud)
+        self.get_logger().info("Calling detect_step()")
+
 
         if detected and step_cloud is not None:
             step_pts = np.asarray(step_cloud.points)
@@ -141,7 +244,7 @@ class LidarStepDetector(Node):
         """
         # Convert rotation angles to radians
         angle_flip_x = np.pi  # 180 degrees
-        angle_pitch_y = np.radians(30)  # 30 degrees
+        angle_pitch_y = np.radians(-150)  # 30 degrees
         
         # Rotation matrix for 180° about X-axis (flip upside down)
         cos_fx = np.cos(angle_flip_x)
@@ -193,6 +296,9 @@ class LidarStepDetector(Node):
         return ground_cloud, plane_model, obstacle_cloud
 
     def detect_step(self, point_cloud):
+
+        
+
         """
         Detect horizontal step (pallet top surface) using RANSAC + DBSCAN + validation.
         
@@ -203,7 +309,8 @@ class LidarStepDetector(Node):
         - (detected: bool, distance_m: float, step_cloud: PointCloud or None)
         """
         points = np.asarray(point_cloud.points)
-
+        self.get_logger().info(f"Obstacle cloud size: {len(points)}")
+        
         # Need minimum points to detect
         if len(points) < 10:
             return False, 0.0, None
@@ -217,6 +324,10 @@ class LidarStepDetector(Node):
 
         # Check if plane is horizontal (normal mostly in Z direction)
         normal_vector = plane_model[:3]
+        normal_vector = normal_vector / np.linalg.norm(normal_vector)
+
+        self.get_logger().info(f"Ground normal: {normal_vector}")
+
         if np.abs(normal_vector[2]) <= self.horizontal_min_nz:
             return False, 0.0, None
 
@@ -227,6 +338,8 @@ class LidarStepDetector(Node):
         inlier_cloud = point_cloud.select_by_index(inliers)
         inlier_points = np.asarray(inlier_cloud.points)
 
+        self.get_logger().info(f"Ground inliers: {len(inliers)}")
+
         # Check if plane height is in expected range for pallet
         z_coords = inlier_points[:, 2]
         sorted_indices = np.argsort(z_coords)
@@ -235,7 +348,7 @@ class LidarStepDetector(Node):
         step_height = np.mean(top_heights)
 
         if not (self.min_step_height < step_height < self.max_step_height):
-            return False, 0.0, None
+           return False, 0.0, None
 
         # Apply DBSCAN clustering to group nearby inlier points
         labels = np.array(inlier_cloud.cluster_dbscan(
@@ -282,14 +395,20 @@ class LidarStepDetector(Node):
         step_cloud = inlier_cloud.select_by_index(largest_cluster_indices)
         distance = float(np.median(cluster_points[:, 0]))
 
-        self.get_logger().info(f"Step detected! Height: {step_height:.3f} m, Distance: {distance:.2f} m")
+        self.get_logger().info(f"Step detected! dbjbauidaebjfenjuceabuafuaeadaadbhefabkefjkaefhjaefhjuaeffajnofejbefbhjegf Height: {step_height:.3f} m, Distance: {distance:.2f} m")
         return True, distance, step_cloud
 
     def publish_detection(self, detected: bool, distance: float, upstairs: bool):
-        msg = Stair()
-        msg.detected = bool(detected)
-        msg.upstairs = bool(upstairs)  # not used here, kept for compatibility
-        msg.distance = float(distance) if detected else 0.0
+        msg = Float32MultiArray()
+        # msg.detected = bool(detected)
+        #  msg.upstairs = bool(upstairs)  # not used here, kept for compatibility
+        # msg.distance = float(distance) if detected else 0.0
+        msg.data = [
+        1.0 if detected else 0.0,
+        1.0 if upstairs else 0.0,
+        float(distance) if detected else 0.0
+    ]
+        
         self.det_pub.publish(msg)
 
         if detected:
